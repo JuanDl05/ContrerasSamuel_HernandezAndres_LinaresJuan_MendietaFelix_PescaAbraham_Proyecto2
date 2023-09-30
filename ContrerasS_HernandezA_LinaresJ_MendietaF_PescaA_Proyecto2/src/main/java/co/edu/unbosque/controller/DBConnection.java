@@ -13,14 +13,13 @@ public class DBConnection {
 	private Statement statement = null;
 	private PreparedStatement preparedstatement = null;
 	private ResultSet resultset = null;
-	private final String IP = "127.0.0.1";
+	private final String IP = "35.239.57.35";
 	private final String PORT = "3306";
-	private final String DATABASE = "alcoholicosanonimos";
+	private final String DATABASE = "contrerasSamuel";
 	private final String USERNAME = "root";
-	private final String PASSWORD = "";
+	private final String PASSWORD = "programacion2";
 
 	public DBConnection() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void initConnection() {
@@ -34,7 +33,6 @@ public class DBConnection {
 			connect = DriverManager.getConnection("jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE, USERNAME,	PASSWORD);
 			System.out.println("Conexion realizada con exito!");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -54,7 +52,6 @@ public class DBConnection {
 				connect.close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

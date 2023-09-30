@@ -62,7 +62,7 @@ public class UserAlcoholicDAO implements UsersCRUD{
 			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM usuario;"));
 			while(dbcon.getResultset().next()) {
 				int id = dbcon.getResultset().getInt("id");
-				String user = dbcon.getResultset().getString("usuario");
+				String user = dbcon.getResultset().getString("nombreusuario");
 				String password = dbcon.getResultset().getString("contrasena");
 				userAlcoholicsList.add(new UserAlcoholicDTO(id, user, password));
 			}
