@@ -30,7 +30,7 @@ public class UserPsychoDAO implements UsersCRUD{
 		UserPsychoDTO newPsychos = (UserPsychoDTO) o;
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO usuario VALUES(?, ?, ?);"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO userPsychologist VALUES(?, ?, ?);"));
 			dbcon.getPreparedstatement().setInt(1, newPsychos.getId());
 			dbcon.getPreparedstatement().setString(1, newPsychos.getUserPsycho());
 			dbcon.getPreparedstatement().setString(2, newPsychos.getPassPsycho());
@@ -59,7 +59,7 @@ public class UserPsychoDAO implements UsersCRUD{
 		dbcon.initConnection();
 		try {
 			dbcon.setStatement(dbcon.getConnect().createStatement());
-			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM usuario;"));
+			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM userPsychologist;"));
 			while(dbcon.getResultset().next()) {
 				int id = dbcon.getResultset().getInt("id");
 				String user = dbcon.getResultset().getString("nombreusuario");
@@ -89,15 +89,14 @@ public class UserPsychoDAO implements UsersCRUD{
 
 	@Override
 	public int updateById(int id, String... args) {
-		// TODO Auto-generated method stub
-		return 0;
+	return 0;
 	}
 
 	@Override
 	public int deleteById(int id) {
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM usuario WHERE id = ?;"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM userPsychologist WHERE id = ?;"));
 			dbcon.getPreparedstatement().setInt(1, id);
 			dbcon.getPreparedstatement().executeUpdate();
 			dbcon.close();

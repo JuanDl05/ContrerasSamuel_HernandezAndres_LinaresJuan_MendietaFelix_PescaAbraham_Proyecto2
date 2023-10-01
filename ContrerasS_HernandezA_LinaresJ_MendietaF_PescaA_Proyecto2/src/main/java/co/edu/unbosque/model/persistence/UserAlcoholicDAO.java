@@ -30,7 +30,7 @@ public class UserAlcoholicDAO implements UsersCRUD{
 		UserAlcoholicDTO newAlcoholics = (UserAlcoholicDTO) o;
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO usuario VALUES(?, ?, ?);"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO userAlcoholic VALUES(?, ?, ?);"));
 			dbcon.getPreparedstatement().setInt(1, newAlcoholics.getId());
 			dbcon.getPreparedstatement().setString(1, newAlcoholics.getUserAlcoholic());
 			dbcon.getPreparedstatement().setString(2, newAlcoholics.getPassAlcoholic());
@@ -59,7 +59,7 @@ public class UserAlcoholicDAO implements UsersCRUD{
 		dbcon.initConnection();
 		try {
 			dbcon.setStatement(dbcon.getConnect().createStatement());
-			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM usuario;"));
+			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM userAlcoholic;"));
 			while(dbcon.getResultset().next()) {
 				int id = dbcon.getResultset().getInt("id");
 				String user = dbcon.getResultset().getString("nombreusuario");
@@ -97,7 +97,7 @@ public class UserAlcoholicDAO implements UsersCRUD{
 	public int deleteById(int id) {
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM usuario WHERE id = ?;"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM userAlcoholic WHERE id = ?;"));
 			dbcon.getPreparedstatement().setInt(1, id);
 			dbcon.getPreparedstatement().executeUpdate();
 			dbcon.close();

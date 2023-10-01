@@ -30,7 +30,7 @@ public class AlcoholicDAO implements CRUDoperations{
 		AlcoholicDTO newAlcoholic = (AlcoholicDTO) o;
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO usuario VALUES(?, ?, ?, ?);"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO alcoholic VALUES(?, ?, ?, ?, ?, ?, ?);"));
 			dbcon.getPreparedstatement().setInt(1, newAlcoholic.getId());
 			dbcon.getPreparedstatement().setString(2, newAlcoholic.getName());
 			dbcon.getPreparedstatement().setLong(3, newAlcoholic.getCc());
@@ -63,7 +63,7 @@ public class AlcoholicDAO implements CRUDoperations{
 		dbcon.initConnection();
 		try {
 			dbcon.setStatement(dbcon.getConnect().createStatement());
-			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM usuario;"));
+			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM alcoholic;"));
 			while(dbcon.getResultset().next()) {
 				int id = dbcon.getResultset().getInt("id");
 				String name = dbcon.getResultset().getString("nombre");
@@ -99,7 +99,7 @@ public class AlcoholicDAO implements CRUDoperations{
 	public int updateById(int id, String... args) {
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("UPDATE usuario SET id = ?, nombre = ?, nombreusuario = ?, contrasena = ? WHERE id = ?;"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("UPDATE alcoholic SET id = ?, nombre = ?, cedula = ?, contrasena = , ciudadnacimiento = ?, sesionesvisitadas = ?, apodo = ? WHERE id = ?;"));
 			dbcon.getPreparedstatement().setInt(1, id);
 			dbcon.getPreparedstatement().setString(2, args[0]);
 			dbcon.getPreparedstatement().setLong(3, Long.parseLong(args[1]));
@@ -133,7 +133,7 @@ public class AlcoholicDAO implements CRUDoperations{
 	public int deleteById(int id) {
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM usuario WHERE id = ?;"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM alcoholic WHERE id = ?;"));
 			dbcon.getPreparedstatement().setInt(1, id);
 			dbcon.getPreparedstatement().executeUpdate();
 			dbcon.close();

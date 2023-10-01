@@ -7,7 +7,6 @@ public class UserPsychoDTO {
 	private String passPsycho;
 
 	public UserPsychoDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public UserPsychoDTO(int id, String userPsycho, String passPsycho) {

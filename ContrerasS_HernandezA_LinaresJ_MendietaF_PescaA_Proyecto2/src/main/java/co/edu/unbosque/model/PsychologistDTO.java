@@ -10,7 +10,6 @@ public class PsychologistDTO extends PersonDTO{
 	private long salary;
 	
 	public PsychologistDTO() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public PsychologistDTO(int graduationYear, int daysOfService, int supportedSessions, long salary) {

@@ -30,7 +30,7 @@ public class UserJanitorDAO implements UsersCRUD{
 		UserJanitorDTO newJanitors = (UserJanitorDTO) o;
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO usuario VALUES(?, ?, ?);"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO userJanitor VALUES(?, ?, ?);"));
 			dbcon.getPreparedstatement().setInt(1, newJanitors.getId());
 			dbcon.getPreparedstatement().setString(1, newJanitors.getUserJanitor());
 			dbcon.getPreparedstatement().setString(2, newJanitors.getPassJanitor());
@@ -59,7 +59,7 @@ public class UserJanitorDAO implements UsersCRUD{
 		dbcon.initConnection();
 		try {
 			dbcon.setStatement(dbcon.getConnect().createStatement());
-			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM usuario;"));
+			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM userJanitor;"));
 			while(dbcon.getResultset().next()) {
 				int id = dbcon.getResultset().getInt("id");
 				String user = dbcon.getResultset().getString("nombreusuario");
@@ -97,7 +97,7 @@ public class UserJanitorDAO implements UsersCRUD{
 	public int deleteById(int id) {
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM usuario WHERE id = ?;"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM userJanitor WHERE id = ?;"));
 			dbcon.getPreparedstatement().setInt(1, id);
 			dbcon.getPreparedstatement().executeUpdate();
 			dbcon.close();

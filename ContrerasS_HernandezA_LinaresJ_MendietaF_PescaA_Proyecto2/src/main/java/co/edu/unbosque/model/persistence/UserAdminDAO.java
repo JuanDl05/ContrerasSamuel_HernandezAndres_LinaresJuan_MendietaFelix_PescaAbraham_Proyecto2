@@ -30,7 +30,7 @@ public class UserAdminDAO implements UsersCRUD{
 		UserAdminDTO newAdmin = (UserAdminDTO) o;
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO usuario VALUES(?, ?, ?);"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("INSERT INTO userAdministrator VALUES(?, ?, ?);"));
 			dbcon.getPreparedstatement().setInt(1, newAdmin.getId());
 			dbcon.getPreparedstatement().setString(1, newAdmin.getUserAdmin());
 			dbcon.getPreparedstatement().setString(2, newAdmin.getPassAdmin());
@@ -59,7 +59,7 @@ public class UserAdminDAO implements UsersCRUD{
 		dbcon.initConnection();
 		try {
 			dbcon.setStatement(dbcon.getConnect().createStatement());
-			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM usuario;"));
+			dbcon.setResultset(dbcon.getStatement().executeQuery("SELECT * FROM userAdministrator;"));
 			while(dbcon.getResultset().next()) {
 				int id = dbcon.getResultset().getInt("id");
 				String user = dbcon.getResultset().getString("nombreusuario");
@@ -97,7 +97,7 @@ public class UserAdminDAO implements UsersCRUD{
 	public int deleteById(int id) {
 		dbcon.initConnection();
 		try {
-			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM usuario WHERE id = ?;"));
+			dbcon.setPreparedstatement(dbcon.getConnect().prepareStatement("DELETE FROM userAdministrator WHERE id = ?;"));
 			dbcon.getPreparedstatement().setInt(1, id);
 			dbcon.getPreparedstatement().executeUpdate();
 			dbcon.close();
