@@ -1,3 +1,11 @@
+/*
+ * La clase DBConnection proporciona una conexión a una base de datos MySQL
+ * y métodos para iniciar y cerrar la conexión, así como para acceder a los
+ * objetos Connection, Statement, PreparedStatement y ResultSet.
+ * Esta clase utiliza el controlador JDBC de MySQL para establecer la conexión
+ * con la base de datos especificada.  
+*/
+
 package co.edu.unbosque.controller;
 
 import java.sql.Connection;
@@ -8,7 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBConnection {
-	
+
 	private Connection connect = null;
 	private Statement statement = null;
 	private PreparedStatement preparedstatement = null;
@@ -19,10 +27,18 @@ public class DBConnection {
 	private final String USERNAME = "root";
 	private final String PASSWORD = "";
 
+	/*
+	 * Constructor por defecto de la clase DBConnection.
+	 */
 	public DBConnection() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/*
+	 * Inicia la conexión a la base de datos utilizando los parámetros de conexión
+	 * especificados en las constantes IP, PORT, DATABASE, USERNAME y PASSWORD.
+	 * Además, carga el controlador JDBC de MySQL.
+	 */
 	public void initConnection() {
 
 		try {
@@ -31,7 +47,8 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE, USERNAME,	PASSWORD);
+			connect = DriverManager.getConnection("jdbc:mysql://" + IP + ":" + PORT + "/" + DATABASE, USERNAME,
+					PASSWORD);
 			System.out.println("Conexion realizada con exito!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -40,12 +57,15 @@ public class DBConnection {
 
 	}
 
+	/*
+	 * Cierra la conexión a la base de datos, así como los objetos Statement,
+	 * ResultSet y Connection si están abiertos.
+	 */
 	public void close() {
-		
+
 		try {
 			if (resultset != null) {
 				resultset.close();
-
 			}
 			if (statement != null) {
 				statement.close();
@@ -58,6 +78,8 @@ public class DBConnection {
 			e.printStackTrace();
 		}
 	}
+
+	// Getters y setters para los atributos de la clase
 
 	public Connection getConnect() {
 		return connect;
@@ -110,6 +132,4 @@ public class DBConnection {
 	public String getPASSWORD() {
 		return PASSWORD;
 	}
-	
-
 }
